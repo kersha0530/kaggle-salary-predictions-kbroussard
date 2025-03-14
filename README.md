@@ -67,6 +67,5 @@ This project explores how **college majors** influence **mid-career salaries** u
 ✅ Certain **majors** lead to significantly higher earnings
 ✅ **Random Forest** outperformed **Linear Regression** for salary predictions
 
-
-📧 **Contact:** kbroussard321@gmail.com  
+ 
 🔗 **GitHub Repository:** 
