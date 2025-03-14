@@ -30,11 +30,18 @@ df[["Early Career Pay", "Mid-Career Pay"]].hist(bins=30, figsize=(12, 6))
 plt.suptitle("Distribution of Early Career Pay and Mid-Career Pay")
 plt.show()
 
-# **2. Boxplot for Mid-Career Pay by Major**
-plt.figure(figsize=(15, 6))
-sns.boxplot(y=df["Mid-Career Pay"], x=df["Major"], data=df)
-plt.xticks(rotation=90)
-plt.title("Mid-Career Pay Distribution by Major")
+import matplotlib.pyplot as plt
+import seaborn as sns
+# ** 2 Boxplot for Mid-Career Pay by Major**
+# Get the top 10 majors with the highest Mid-Career Pay
+top_majors = df.groupby("Major")["Mid-Career Pay"].median().nlargest(10).index
+df_top = df[df["Major"].isin(top_majors)]
+
+# Create a boxplot for the top 10 majors
+plt.figure(figsize=(12, 6))
+sns.boxplot(y=df_top["Mid-Career Pay"], x=df_top["Major"], data=df_top)
+plt.xticks(rotation=45, ha="right")  # Rotate and align labels for better readability
+plt.title("Top 10 Majors by Mid-Career Pay")
 plt.xlabel("Major")
 plt.ylabel("Mid-Career Pay ($)")
 plt.show()
@@ -47,11 +54,18 @@ plt.xlabel("Early Career Pay ($)")
 plt.ylabel("Mid-Career Pay ($)")
 plt.show()
 
-# **4. Correlation Heatmap**
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Select only numerical columns for correlation analysis
+df_numeric = df.select_dtypes(include=[np.number])
+
+# Plot the heatmap with only numeric columns
 plt.figure(figsize=(12, 8))
-sns.heatmap(df.corr(), annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
+sns.heatmap(df_numeric.corr(), annot=True, cmap="coolwarm", fmt=".2f", linewidths=0.5)
 plt.title("Feature Correlations with Mid-Career Pay")
 plt.show()
+
 
 # Save the processed dataset for future modeling
 df.to_csv("processed_post_college_salaries.csv", index=False)
