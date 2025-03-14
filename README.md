@@ -67,10 +67,6 @@ This project explores how **college majors** influence **mid-career salaries** u
 ✅ Certain **majors** lead to significantly higher earnings
 ✅ **Random Forest** outperformed **Linear Regression** for salary predictions
 
-## 📌 Next Steps
-🔹 Try **more advanced ML models** (e.g., Gradient Boosting, XGBoost)
-🔹 Explore **external datasets** to enrich analysis
-🔹 Deploy the model as a **web app** for salary predictions
 
 📧 **Contact:** kbroussard321@gmail.com  
 🔗 **GitHub Repository:** 
